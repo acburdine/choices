@@ -29,6 +29,7 @@
                 margin-right: auto;
                 text-align: center;
                 list-style-position: inside;
+                list-style-type: upper-latin;
             }
             
             .choice {
@@ -46,6 +47,8 @@
     <body>
         
         <div class="js-text main-text"></div>
+        
+        <br><br>
         
         <ol id="list">
             
@@ -131,8 +134,17 @@
                     if (typeof next === 'object') {
                         next = next.run();
                     }
-
-                    renderScenario(next);
+                    
+                    if (typeof next === 'object') {
+                        $('#list').html('').hide();
+                        $('.js-text').html('');
+                        
+                        showText('.js-text', next.response, 0, 30, function () {
+                            $('#solo').html('').append($('<span>').html('Next').data('next', next.next).addClass('choice js-choice')).show();
+                        });
+                    } else {
+                        renderScenario(next);   
+                    }
                 });
             });
         </script>
