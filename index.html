@@ -1,1 +1,140 @@
-Choices
+<!doctype html>
+<html>
+    <head>
+        <title>Choices | A game about life's choices.</title>
+        
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        
+        <style>
+            body {
+                background-color: black;
+                color: white;
+                font-size: 24px;
+                font-family: 'Open Sans', sans-serif;
+            }
+            
+            .main-text {
+                margin-top: 100px;
+                margin-left: auto;
+                margin-right: auto;
+                width: 750px;
+            }
+            
+            #solo {
+                text-align: center;
+            }
+            
+            #list {
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                list-style-position: inside;
+            }
+            
+            .choice {
+                text-align: center;
+            }
+            
+            .choice:hover {
+                font-weight: bold;
+                cursor: pointer;
+            }
+        </style>
+        
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    </head>
+    <body>
+        
+        <div class="js-text main-text"></div>
+        
+        <ol id="list">
+            
+        </ol>
+        
+        <div id="solo"></div>
+        
+        <script type="text/javascript" src="story.js"></script>
+        <script type="text/javascript">
+            function showText(target, message, index, interval, cb) {
+                if (interval === 0) {
+                    message = message.replace(/\\/g, '<br>');
+                    message = message.replace(/\//g, '\'');
+                    $(target).html(message);
+                    cb();
+                    return;
+                }
+                
+                if (index < message.length) {
+                    var i = message[index++];
+                    
+                    if (/\\/.test(i)) {
+                        i = '<br>';
+                    }
+                    
+                    if (/\//.test(i)) {
+                        i = '\'';
+                    }
+                    
+                    $(target).html($(target).html() + i);
+                    setTimeout(function () {
+                        showText(target, message, index, interval, cb);
+                    }, interval);
+                } else {
+                    cb();
+                }
+            }
+            
+            function renderScenario(index, isFirstRun) {
+                var data = storyData[index],
+                    message = data.message,
+                    proceed = data.proceed,
+                    interval = isFirstRun ? 0 : 30;
+                
+                if (typeof message === Function) {
+                    message = message();
+                }
+                
+                if (typeof proceed === Function) {
+                    proceed = proceed();
+                }
+                
+                ss.setItem('step', index);
+                
+                showText('.js-text', message, 0, interval, function () {
+                    if (proceed.constructor && proceed.constructor === Array) {
+                        for (var i in proceed) {
+                            var j = proceed[i];
+                            
+                            $('#list').append($('<li>').html(j.msg).data('next', j.next).addClass('choice js-choice'));
+                        }
+                        $('#list').show();
+                    } else {
+                        $('#solo').append($('<span>').html(proceed.msg).data('next', proceed.next).addClass('choice js-choice')).show();
+                    }
+                });
+            }
+            
+            $(document).ready(function () {
+                var initialIndex = (ss.getItem('step')) ? ss.getItem('step') : 0;
+                
+                renderScenario(initialIndex, (initialIndex != 0));
+
+                $('#solo, #list').on('click', '.js-choice', function (event) {
+                    var next = $(this).data('next');
+
+                    event.preventDefault();
+
+                    $('#solo').html('').hide();
+                    $('#list').html('').hide();
+                    $('.js-text').html('');
+                    
+                    if (typeof next === 'object') {
+                        next = next.run();
+                    }
+
+                    renderScenario(next);
+                });
+            });
+        </script>
+    </body>
+</html>
