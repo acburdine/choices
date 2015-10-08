@@ -227,30 +227,127 @@ var storyData = [
                 return {
                     response: "She is surprised at the words you are telling her and a look of distress appears on her face.  She appreciates the honesty, but doesn\'t say much more to you afterwards.",
                     next: 8
-                }
+                };
             }
         }
     ]
 },
 // 8 - jun neutral
 {
-    message: "",
+    message: "After a laborious sophomore year, it\'s finally fall again and now, you\'re into your junior year of high school.  Life is normal, until one day, your father bursts into your eagerly with concert tickets in his hands.  He explains that he had put his name into a raffle a month prior and that he had just won three tickets to go see a triple-header concert, featuring One Direction, Justin Bieber, and Weird Al!\\\\You learn that he wants to take you with him and that he has one more ticket to spare, because your mother doesn\'t like Justin Bieber. So he suggests that you ask Sally or Ken to tag along.",
     proceed: [
-        
+        {
+            msg: "Offer the ticket to Ken.",
+            next: function () {
+                increment('ken');
+                decrement('sally');
+                return {
+                    response: "Ken lets out a girlish squeal when you offer him the ticket and he instantly accepts. You soon discover that he always ends up getting One Direction stuck in his head anyways from how overplayed they are on pop-radio, so he might as well go see them.",
+                    next: 9
+                };
+            }
+        },
+        {
+            msg: "Tell your dad to sell the extra ticket.",
+            next: function () {
+                var ken = ss.getItem('ken'),
+                    sally = ss.getItem('sally'),
+                    next = (parseInt(ken) > parseInt(sally)) ? 9 : 10;
+                
+                return {
+                    response: "Your father gives you a puzzled look, before nodding and closing your door.  He ends up selling the ticket like you wanted and used the money to buy himself a Justin Bieber shirt at the concert, because he is a Belieber.",
+                    next: next
+                };
+            }
+        },
+        {
+            msg: "Offer the ticket to Sally.",
+            next: function () {
+                increment('sally');
+                decrement('ken');
+                
+                return {
+                    response: "YES! Sally exclaims as she accepts the ticket you offer her. Later, on the way to the concert, you learn that she has been a Weird Al fan ever since she was 5 years old and can name very song from \"Fat\" all the way to \"Albuquerque\".",
+                    next: 10
+                };
+            }
+        }
     ]
 },
 // 9 - jun ken
 {
-    message: "",
+    message: "One afternoon, as you were heading home from school, you notice Ken sitting alone on the gym bleachers.  You approach him and discover that he was chosen to pick teams for dodgeball earlier that day and that everyone he choose complained about being picked.\\\\Then after the game, some of the guys in the locker room stole Ken\'s cloths and backpack and threw them into the shower.  Which resulted in all of his books and homework being destroyed.\\\\How do you react to the situation?",
     proceed: [
-        
+        {
+            msg: "Tell him that those guys are just insecure jerks and that you\'ll help him catch back up in class by using your books.",
+            next: function () {
+                increment('ken');
+                return {
+                    response: "Ken\'s mood brightens and you help gather his belongs before you both head for home together.",
+                    next: 11
+                };
+            }
+        },
+        {
+            msg: "Tell Ken that you don\'t have time to stick around and diffuse yourself from the situation.",
+            next: {
+                response: "Ken lets out a soft sigh and watches you as you exit the gym.",
+                next: 11
+            }
+        },
+        {
+            msg: "Tell him that he hasn\t really done much to contribute to his reputation and, on top of that, that he\'s not very athletic.",
+            next: function () {
+                decrement('ken');
+                return {
+                    response: "Your words visibly hurt Ken and his face sinks into his hands as you turn away to leave the gym.",
+                    next: 11
+                };
+            }
+        }
     ]
 },
 // 10 - jun sal
 {
-    message: "",
+    message: "One morning, as you were leaving your house, you notice Sally next door.  She approaches you with a giddy smile on her face.  She informs you that she and a few other friends went out partying the night before. There was alcohol involved as you can smell it lingering upon her breath.\\\\She appears incredibly happy to have told you and is anxiously awaiting your response.  You assume her parents are unaware of how activities the previous night.\\\\What do you decide to do?",
     proceed: [
-        
+        {
+            msg: "Praise her and ask her to let you know next time she\'s going out.",
+            next: function () {
+                increment('sally');
+                return {
+                    response: "Sally is happy by your response and nods.  She\'ll definitely let you know next she’s out, then she returns to her house as you go about your day.",
+                    next: 11
+                };
+            }
+        },
+        {
+            msg: "Be indifferent and let you know that you\'re not really interested in partying.",
+            next: {
+                response: "Sally nods and returns inside her home after her mother calls her in for food.",
+                next: 11
+            }
+        },
+        {
+            msg: "Remind her that she\'s underage and that you\'re considering informing her parents of her actions.",
+            next: function () {
+                decrement('sally');
+                return {
+                    response: "Sally becomes cross and glares you done fearfully at your threat. Not sure why you refuse to have any fun, let alone ruin hers.",
+                    next: 11
+                }
+            }
+        }
     ]
+},
+// 11 - ponr decision
+{
+    
+},
+{
+    
+},
+{
+    
 }
 ];
