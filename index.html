@@ -92,7 +92,7 @@
                 var data = storyData[index],
                     message = data.message,
                     proceed = data.proceed,
-                    interval = isFirstRun ? 0 : 30;
+                    interval = isFirstRun ? 0 : 60;
                 
                 if (_.isFunction(message)) {
                     message = message();
@@ -140,7 +140,7 @@
                         $('#list').html('').hide();
                         $('.js-text').html('');
                         
-                        showText('.js-text', next.response, 0, 30, function () {
+                        showText('.js-text', next.response, 0, 60, function () {
                             $('#solo').html('').append($('<span>').html('Next').data('next', next.next).addClass('choice js-choice')).show();
                         });
                     } else {
