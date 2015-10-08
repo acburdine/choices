@@ -340,14 +340,108 @@ var storyData = [
         }
     ]
 },
-// 11 - ponr decision
+// 11 - senior year beginnings
 {
-    
+    message: "Senior year has begun. The pinnacle of your high school career.\\\\All of your choices leading up to this point have been important; however, as graduation dawns, your choices become even more important. In fact, they have the ability to change your life.\\\\You head into senior year excited for what it has in store.",
+    proceed: function () {
+        var ken = parseInt(ss.getItem('ken')),
+            sally = parseInt(ss.getItem('sally')),
+            next;
+        
+        if (ken > sally) {
+            next = 12;
+        } else if (ken === sally) {
+            next = 13;
+        } else {
+            next = 14;
+        }
+        
+        return {
+            msg: "Next",
+            next: next
+        };
+    }
 },
+// 12 - ken ponr
 {
-    
+    message: "You are walking through the halls of school one day when you come upon a commotion. You see Ken up against a wall of lockers, surrounded by Sally and several of Sally\'s friends.\\\\Sally, leading her friends, is calling Ken horrible names in order to get laughter from her friends. Ken seems more depressed with each name he is called.\\\\What do you do?",
+    proceed: [
+        {
+            msg: "Make Sally look stupid in front of her friends, sticking up for Ken.",
+            next: {
+                response: "Sally is extremely upset that you made fun of her in front of her friends; however, Ken, although he still seems sad, gives you a hug and thanks you for sticking up for him.",
+                next: 15
+            }
+        },
+        {
+            msg: "Walk away and ignore the situation.",
+            next: {
+                response: "You walk away, but as you do Ken catches your eye. His face completely falls as he knows you are abandoning him.",
+                next: 16
+            }
+        }
+    ]
 },
+// 13 - both ponr
 {
-    
+    message: "It\'s your 18th birthday and you are having an amazing party at your house. The day is going great, but a few hours into it, you hear an argument going on.\\\\You walk over and see Ken and Sally having an argument. You hear that they are arguing over who is the better friend to you. Upon noticing your arrival, they ask you which of them is the better friend.\\\\What do you say?",
+    proceed: [
+        {
+            msg: "Tell Ken that he is the better friend",
+            next: {
+                response: "Sally is immediately outraged, and storms off. Ken seems initially happy, but then he begins to accuse you of lying because you also spend a significant amount of time with Sally.",
+                next: 16
+            }
+        },
+        {
+            msg: "Say that they are both good friends and neither is better.",
+            next: {
+                response: "They resent you because you can’t decide between the two of them, and you leave to tend to your other guests.",
+                next: 16
+            }
+        },
+        {
+            msg: "Tell Sally that she is the better friend",
+            next: {
+                response: "Ken is sad, and leaves the party. Sally initialy is happy because you chose her over Ken, but eventually starts to accuse you of spending too much time with Ken.",
+                next: 16
+            }
+        }
+    ]
+},
+// 14 - sally ponr
+{
+    message: "After school one day, Sally approaches you as you are heading home from school. She tells you about a party she has planned for that night, and she invites you to come.\\\\However, you know that you also have plans that day with Ken, and he might be hurt if you decide to cancel.\\\\What do you do?",
+    proceed: [
+        {
+            msg: "Go with Sally.",
+            next: {
+                response: "You eagerly go with Sally to the party. Because you are somewhat ashamed of ditching Ken, you don’t tell Ken that you are cancelling.",
+                next: 17
+            }
+        },
+        {
+            msg: "Refuse to go.",
+            next: {
+                response: "You attempt to refuse going to the party, but Sally is insistent. She ultimately drags you to her car. Because you feel bad about ditching Ken, you text him and let him know you are cancelling. Sally sees you, however, and doesn’t look pleased.",
+                next: 16
+            }
+        }
+    ]
+},
+// 15 - ken live
+{
+    message: "",
+    proceed: []
+},
+// 16 - both die
+{
+    message: "",
+    proceed: []
+},
+// 17 - sally live
+{
+    message: "",
+    proceed: []
 }
 ];
