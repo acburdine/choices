@@ -42,7 +42,8 @@
             }
         </style>
         
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
     </head>
     <body>
         
@@ -93,18 +94,18 @@
                     proceed = data.proceed,
                     interval = isFirstRun ? 0 : 30;
                 
-                if (typeof message === Function) {
+                if (_.isFunction(message)) {
                     message = message();
                 }
                 
-                if (typeof proceed === Function) {
+                if (_.isFunction(proceed)) {
                     proceed = proceed();
                 }
                 
                 ss.setItem('step', index);
                 
                 showText('.js-text', message, 0, interval, function () {
-                    if (proceed.constructor && proceed.constructor === Array) {
+                    if (_.isArray(proceed)) {
                         for (var i in proceed) {
                             var j = proceed[i];
                             
@@ -131,11 +132,11 @@
                     $('#list').html('').hide();
                     $('.js-text').html('');
                     
-                    if (typeof next === 'object') {
-                        next = next.run();
+                    if (_.isFunction(next)) {
+                        next = next();
                     }
                     
-                    if (typeof next === 'object') {
+                    if (_.isObject(next)) {
                         $('#list').html('').hide();
                         $('.js-text').html('');
                         
