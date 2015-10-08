@@ -17,6 +17,8 @@ var decrement = function(index) {
     ss.setItem(index, parseInt(ss.getItem(index)) - 1);
 };
 
+var parentsDie = "As you near the end of your senior year, disaster falls. You receive the news one day that Sally's parents have died. It was a terrible car accident and you can only imagine what Sally is going through. You decide to head over to your house to comfort her.";
+
 var storyData = [
 {
     message: "You will be presented with a series of situations. Each situation will present you with several choices. Depending upon the choices you make, the plot of the game will change. Therefore, choose wisely.",
@@ -119,7 +121,7 @@ var storyData = [
                 return {
                     response: "She is caught off guard by your reaction and retreats down the hallway, without saying another word to you.",
                     next: 5
-                }
+                };
             }
         }
     ]
@@ -201,7 +203,7 @@ var storyData = [
 },
 // 7 - soph sally
 {
-    message: "One afternoon, on your way to your next class, Sally approaches you and asks you for some advice. She wants to know if her crush is a good guy and if you think he’d be good for her.  You know him, he\'s on the school football team, but you\'ve seen how he treats other people.\\\\You’re not a huge fan of this guy, but you can tell that Sally is really interested. How do you handle the situation?",
+    message: "One afternoon, on your way to your next class, Sally approaches you and asks you for some advice. She wants to know if her crush is a good guy and if you think he\'d be good for her.  You know him, he\'s on the school football team, but you\'ve seen how he treats other people.\\\\You\'re not a huge fan of this guy, but you can tell that Sally is really interested. How do you handle the situation?",
     proceed: [
         {
             msg: "Recognizing how much she likes him, you ignore your past experiences with him and tell her that he\'s a good guy.",
@@ -316,7 +318,7 @@ var storyData = [
             next: function () {
                 increment('sally');
                 return {
-                    response: "Sally is happy by your response and nods.  She\'ll definitely let you know next she’s out, then she returns to her house as you go about your day.",
+                    response: "Sally is happy by your response and nods.  She\'ll definitely let you know next she\'s out, then she returns to her house as you go about your day.",
                     next: 11
                 };
             }
@@ -335,7 +337,7 @@ var storyData = [
                 return {
                     response: "Sally becomes cross and glares you done fearfully at your threat. Not sure why you refuse to have any fun, let alone ruin hers.",
                     next: 11
-                }
+                };
             }
         }
     ]
@@ -396,7 +398,7 @@ var storyData = [
         {
             msg: "Say that they are both good friends and neither is better.",
             next: {
-                response: "They resent you because you can’t decide between the two of them, and you leave to tend to your other guests.",
+                response: "They resent you because you can\'t decide between the two of them, and you leave to tend to your other guests.",
                 next: 16
             }
         },
@@ -416,14 +418,14 @@ var storyData = [
         {
             msg: "Go with Sally.",
             next: {
-                response: "You eagerly go with Sally to the party. Because you are somewhat ashamed of ditching Ken, you don’t tell Ken that you are cancelling.",
+                response: "You eagerly go with Sally to the party. Because you are somewhat ashamed of ditching Ken, you don\'t tell Ken that you are cancelling.",
                 next: 17
             }
         },
         {
             msg: "Refuse to go.",
             next: {
-                response: "You attempt to refuse going to the party, but Sally is insistent. She ultimately drags you to her car. Because you feel bad about ditching Ken, you text him and let him know you are cancelling. Sally sees you, however, and doesn’t look pleased.",
+                response: "You attempt to refuse going to the party, but Sally is insistent. She ultimately drags you to her car. Because you feel bad about ditching Ken, you text him and let him know you are cancelling. Sally sees you, however, and doesn\'t look pleased.",
                 next: 16
             }
         }
@@ -431,17 +433,143 @@ var storyData = [
 },
 // 15 - ken live
 {
-    message: "",
-    proceed: []
+    message: parentsDie,
+    proceed: {
+        msg: "Next",
+        next: 18
+    }
 },
 // 16 - both die
 {
-    message: "",
-    proceed: []
+    message: parentsDie,
+    proceed: {
+        msg: "Next",
+        next: 19
+    }
 },
 // 17 - sally live
 {
-    message: "",
-    proceed: []
+    message: parentsDie,
+    proceed: {
+        msg: "Next",
+        next: 20
+    }
+},
+// 18
+{
+    message: "Walking out of your house, you notice a small slip of paper on your front porch. You pick it up and examine it. The short scrawl you quickly recognize as Ken\'s handwriting. With some curiosity, you read the note.\\\\\"Thank you for being my friend. You have been there for me throughout all that I\'ve gone through, and I am sorry that it\'s come to this.\\\\I have come to believe that I have no value. I don\'t know if I told you, but I caught Jane cheating on me a few days ago. Since we broke up, I haven\'t been the same.\\\\My stepdad also started beating me again. I started to think that maybe the world would be a better place if I were not in it. At least I wouldn\'t have to feel all this pain.\\\\Goodbye.\"\\\\What do you do?",
+    proceed: [
+        {
+            msg: "Continue to Sally\'s house.",
+            next: 21
+        },
+        {
+            msg: "Go to Ken\'s house instead.",
+            next: 22
+        }
+    ]
+},
+// 19
+{
+    message: "You hear a commotion coming from the direction of Ken\'s house. You have no idea what is going on, and you debate going to Ken\'s house instead.\\\\What do you do?",
+    proceed: [
+        {
+            msg: "Go to Ken\'s house and investigate the noise.",
+            next: 23
+        },
+        {
+            msg: "Continue to Sally\'s house.",
+            next: 21
+        }
+    ]
+},
+// 20
+{
+    message: "You hear a commotion coming from the direction of Ken\'s house. You have no idea what is going on, and you debate going to Ken\'s house instead.\\\\What do you do?",
+    proceed: [
+        {
+            msg: "Go to Ken\'s house and investigate the noise.",
+            next: 23
+        },
+        {
+            msg: "Continue to Sally\'s house.",
+            next: 24
+        }
+    ]
+},
+// 21 - sally rejection
+{
+    message: "You rush over to Sally\'s house. When you get there, her \"friends\" are also there, wanting to go partying. She is about to go with them.\\\\You try to convince her to stay, but you aren\'t able and she goes with them.",
+    proceed: {
+        msg: "Next",
+        next: {
+            response: "Leaving her house, you hear sirens coming from your street. Looking outside, you hear them coming from the direction of Ken\'s house. Worried, you venture over.\\\\You walk into Ken\'s room. He\'s lying on the bed, motionless. Policemen walk around the room, talking to other unseen characters. Ken\'s mother is standing in the corner, crying. His stepdad, however, is nowhere to be found.\\\\You look closer at the bed. His face almost seems serene, even in death. There is a small hole in the side of his forehead, and the bed is covered in blood. You hear, as if from far away, someone say: \"It was suicide.\"\\\\You stop and wonder if there was anything you could have done to prevent it. If somehow, your actions could have kept Ken from taking his own life. But alas, it was finished. Nothing could be done for him now. At least it was a quick and painless death.",
+            next: {
+                response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless.",
+                next: {
+                    response: "THE END. Try again?",
+                    next: function () {
+                        ss.setItem('ken', 0);
+                        ss.setItem('sally', 0);
+                        return 0;
+                    }
+                }
+            }
+        }
+    }
+},
+// 22 - ken living
+{
+    message: "Scared by the note you found, you rush over to Ken\'s house. Bursting through the front door, you run up the stairs, worry for your friend making your feet quick.\\\\You knock on Ken\'s door. No response. Praying that the door is unlocked, you try the handle. Fortunately it is unlocked, and you rush through the door.\\\\Ken is sitting on his bed, with some sort of of object in his hand next to his temple. With horror, you realize that he has a gun and is about to take his own life. You quickly tackle him to the floor.\\\\The gun goes off, its report momentarily deafening you. You look up with alarm, hoping beyond hope that you were not too late. Ken looks up at you with sunken eyes red from crying. The gun bullet lodged in the ceiling above.\\\\You were able to save Ken\'s life, and although his life will never be the same, he is at least around to experience it.\\\\After helping Ken to the hospital, you return home, pondering the decisions that have led to this point.",
+    proceed: {
+        msg: "Next",
+        next: {
+            response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless death.",
+            next: {
+                response: "THE END. Try again?",
+                next: function () {
+                    ss.setItem('ken', 0);
+                    ss.setItem('sally', 0);
+                    return 0;
+                }
+            }
+        }
+    }
+},
+// 23 - ken dying
+{
+    message: "You head towards Ken\'s house to investigate the noise. As you walk on to the front porch, you hear a loud bang come from the upstairs window. Worry overcomes you and you run upstairs.\\\\Bursting through Ken\'s bedroom door, you find him lying facedown on his bed, a black metallic object in his hand. Blood is all over the sheets.\\\\His mother, awakened from sleep, comes to see. Upon seeing her dead son, she begins weeping uncontrollably. As you look around the room, you notice a slip of paper on the desk. The short scrawl is easily recognizable as Ken\'s handwriting.\\\\\"To whoever reads this note,\\\\I feel like I no longer have any value in this world. No one seems to love me, and I feel like the world would be a better place if I were not in it.\\\\Goodbye.\"\\\\As if in a daze, you leave the house, you stop and wonder if there was anything you could have done to prevent it. If somehow, your actions could have kept Ken from taking his own life. But alas, it was finished. Nothing could be done for him now. At least it was a quick and painless death.",
+    proceed: {
+        msg: "Next",
+        next: {
+            response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless death.",
+            next: {
+                response: "THE END. Try again?",
+                next: function () {
+                    ss.setItem('ken', 0);
+                    ss.setItem('sally', 0);
+                    return 0;
+                }
+            }
+        }
+    }
+},
+// 24 - sally living
+{
+    message: "Upon hearing of the Johnson\'s passing, you rush over to Sally\'s house.  After a moment of knocking, Sally opens the door, her eyes red and wet with tears.  Before you could say a word, she throws herself into your chest, sobbing.  You embrace her and wait a few moments for her to collect herself.\\\\You both go inside and find some tissues for her to dry her tears.  Thank you, she says, barely breathing air.  You side down beside her, comforting her with both words and presence.  She eventually falls asleep as the evening passes.  As you are heading out, you notice some of her \"friends\" waiting in the driveway, wanting to go partying.  You inform them that Sally is asleep inside and they depart from her residence.\\\\You were able to console Sally and although her parents are gone, she knows that she always has you and your family to go to.",
+    proceed: {
+        msg: "Next",
+        next: {
+            response: "Leaving her house, you hear sirens coming from your street. Looking outside, you hear them coming from the direction of Ken\'s house. Worried, you venture over.\\\\You walk into Ken\'s room. He\'s lying on the bed, motionless. Policemen walk around the room, talking to other unseen characters. Ken\'s mother is standing in the corner, crying. His stepdad, however, is nowhere to be found.\\\\You look closer at the bed. His face almost seems serene, even in death. There is a small hole in the side of his forehead, and the bed is covered in blood. You hear, as if from far away, someone say: \"It was suicide.\"\\\\You stop and wonder if there was anything you could have done to prevent it. If somehow, your actions could have kept Ken from taking his own life. But alas, it was finished. Nothing could be done for him now. At least it was a quick and painless death.",
+            next: {
+                response: "THE END. Try again?",
+                next: function () {
+                    ss.setItem('ken', 0);
+                    ss.setItem('sally', 0);
+                    return 0;
+                }
+            }
+        }
+    }
 }
 ];
