@@ -17,7 +17,7 @@ var decrement = function(index) {
     ss.setItem(index, parseInt(ss.getItem(index)) - 1);
 };
 
-var parentsDie = "As you near the end of your senior year, disaster falls. You receive the news one day that Sally's parents have died. It was a terrible car accident and you can only imagine what Sally is going through. You decide to head over to your house to comfort her.";
+var parentsDie = "As you near the end of your senior year, disaster falls. You receive the news one day that Sally's parents have died. It was a terrible car accident and you can only imagine what Sally is going through. You decide to head over to her house to comfort her.";
 
 var storyData = [
 {
@@ -236,7 +236,7 @@ var storyData = [
 },
 // 8 - jun neutral
 {
-    message: "After a laborious sophomore year, it\'s finally fall again and now, you\'re into your junior year of high school.  Life is normal, until one day, your father bursts into your eagerly with concert tickets in his hands.  He explains that he had put his name into a raffle a month prior and that he had just won three tickets to go see a triple-header concert, featuring One Direction, Justin Bieber, and Weird Al!\\\\You learn that he wants to take you with him and that he has one more ticket to spare, because your mother doesn\'t like Justin Bieber. So he suggests that you ask Sally or Ken to tag along.",
+    message: "After a laborious sophomore year, it\'s finally fall again and now, you\'re into your junior year of high school.  Life is normal, until one day, your father bursts into your room eagerly with concert tickets in his hands.  He explains that he had put his name into a raffle a month prior and that he had just won three tickets to go see a triple-header concert, featuring One Direction, Justin Bieber, and Weird Al!\\\\You learn that he wants to take you with him and that he has one more ticket to spare, because your mother doesn\'t like Justin Bieber. So he suggests that you ask Sally or Ken to tag along.",
     proceed: [
         {
             msg: "Offer the ticket to Ken.",
@@ -311,7 +311,7 @@ var storyData = [
 },
 // 10 - jun sal
 {
-    message: "One morning, as you were leaving your house, you notice Sally next door.  She approaches you with a giddy smile on her face.  She informs you that she and a few other friends went out partying the night before. There was alcohol involved as you can smell it lingering upon her breath.\\\\She appears incredibly happy to have told you and is anxiously awaiting your response.  You assume her parents are unaware of how activities the previous night.\\\\What do you decide to do?",
+    message: "One morning, as you were leaving your house, you notice Sally next door.  She approaches you with a giddy smile on her face.  She informs you that she and a few other friends went out partying the night before. There was alcohol involved as you can smell it lingering upon her breath.\\\\She appears incredibly happy to have told you and is anxiously awaiting your response.  You assume her parents are unaware of her activities the previous night.\\\\What do you decide to do?",
     proceed: [
         {
             msg: "Praise her and ask her to let you know next time she\'s going out.",
@@ -505,7 +505,7 @@ var storyData = [
         next: {
             response: "Leaving her house, you hear sirens coming from your street. Looking outside, you hear them coming from the direction of Ken\'s house. Worried, you venture over.\\\\You walk into Ken\'s room. He\'s lying on the bed, motionless. Policemen walk around the room, talking to other unseen characters. Ken\'s mother is standing in the corner, crying. His stepdad, however, is nowhere to be found.\\\\You look closer at the bed. His face almost seems serene, even in death. There is a small hole in the side of his forehead, and the bed is covered in blood. You hear, as if from far away, someone say: \"It was suicide.\"\\\\You stop and wonder if there was anything you could have done to prevent it. If somehow, your actions could have kept Ken from taking his own life. But alas, it was finished. Nothing could be done for him now. At least it was a quick and painless death.",
             next: {
-                response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless.",
+                response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless death.",
                 next: {
                     response: "THE END. Try again?",
                     next: function () {
@@ -524,7 +524,7 @@ var storyData = [
     proceed: {
         msg: "Next",
         next: {
-            response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless death.",
+            response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless death.",
             next: {
                 response: "THE END. Try again?",
                 next: function () {
@@ -542,7 +542,7 @@ var storyData = [
     proceed: {
         msg: "Next",
         next: {
-            response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless death.",
+            response: "You awaken the next morning at the sound of your parents walking into your room.  Their faces are heavy and your room grows still.  You slowly sit up as your mother sits at the end of your bed, your father stands quietly at the side.\\\\They inform you that last night there was an accident.  Police found a smashed up vehicle involved in a head-on collision with a semi.  There were no survivors and Sally was among them. They had been drinking.\\\\You stop and wonder if there was anything you could have done to prevent it.  If somehow, your actions could have kept Sally from going out.  But alas, it was finished.  Nothing could be done for her now.  At least it was a quick and painless death.",
             next: {
                 response: "THE END. Try again?",
                 next: function () {
